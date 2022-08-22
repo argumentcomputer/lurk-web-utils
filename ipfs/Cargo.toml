@@ -1,0 +1,23 @@
+[package]
+name = "ipfs"
+version = "0.1.0"
+edition = "2021"
+description = "IPFS API for Lurk"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde_json = "1.0"
+libipld = { package = "lurk-ipld", version = "0.1.0", default-features = false, features = ["dag-cbor", "dag-json", "serde-codec"] }
+tokio = { version = "1.18", features = ["rt", "macros"] }
+reqwest = { version = "0.11", features = ["multipart", "json", "blocking"] }
+lurk = { git = "https://github.com/lurk-lang/lurk-rs", branch = "sb/wasm" }
+
+[patch.crates-io]
+blst = { git = "https://github.com/lurk-lang/blst", branch = "sb/wasm" }
+blstrs = { git = "https://github.com/lurk-lang/blstrs", branch = "sb/wasm-lurk-compat" }
+ec-gpu-gen = { git = "https://github.com/lurk-lang/ec-gpu", branch = "sb/wasm-lurk-compat" }
+bellperson = { git = "https://github.com/lurk-lang/bellperson", branch = "sb/wasm-lurk-compat" }
+neptune = { git = "https://github.com/lurk-lang/neptune", branch = "sb/wasm-lurk-compat" }
+nova-snark  = { git = "https://github.com/lurk-lang/nova", branch = "sb/wasm-lurk-compat" }
+
