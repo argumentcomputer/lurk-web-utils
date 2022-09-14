@@ -12,6 +12,7 @@ libipld = { package = "lurk-ipld", version = "0.1.0", default-features = false, 
 tokio = { version = "1.18", features = ["rt", "macros"] }
 reqwest = { version = "0.11", features = ["multipart", "json", "blocking"] }
 lurk = { git = "https://github.com/lurk-lang/lurk-rs", branch = "sb/wasm" }
+blstrs = "0.4.2"
 
 [patch.crates-io]
 blst = { git = "https://github.com/lurk-lang/blst", branch = "sb/wasm" }

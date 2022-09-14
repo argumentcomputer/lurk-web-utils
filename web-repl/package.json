@@ -1,0 +1,26 @@
+{
+  "author": "Sam Burnham",
+  "name": "Lurk web REPL",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "rimraf dist pkg && webpack",
+    "start": "rimraf dist pkg && webpack-dev-server --open",
+    "test": "cargo test && wasm-pack test --headless"
+  },
+  "dependencies": {
+    "xterm": "^4.5.0",
+    "xterm-addon-fit": "^0.3.0"
+  },
+  "devDependencies": {
+    "@wasm-tool/wasm-pack-plugin": "^1.1.0",
+    "copy-webpack-plugin": "^5.0.3",
+    "css-loader": "^3.0",
+    "style-loader": "^1.0",
+    "file-loader": "^6.0.0",
+    "rimraf": "^3.0.0",
+    "webpack": "^4.0",
+    "webpack-cli": "^3.0",
+    "webpack-dev-server": "^3.0",
+    "source-map-loader": "^1.0.0"
+  }
+}
