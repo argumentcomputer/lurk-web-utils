@@ -45,28 +45,28 @@ pub fn web_repl() -> Result<(), JsValue> {
           .with_background("#000000"),
       ),
   );
-  
+
   let elem = web_sys::window()
     .unwrap()
     .document()
     .unwrap()
     .get_element_by_id("terminal")
     .unwrap();
-  
+
   terminal.writeln("Supported keys in this example: <Printable-Characters> <Enter> <Backspace> <Left-Arrow> <Right-Arrow> <Up-Arrow> <Down-Arrow> <Ctrl-C> <Ctrl-L>");
   terminal.open(elem.dyn_into()?);
   prompt(&terminal);
-  
+
   let mut line = String::new();
   let mut cursor_col = 0;
-  
+
   let term: Terminal = terminal.clone().dyn_into()?;
 
   let mut rl = Editor::<()>::new().unwrap();
   let mut idx = rl.history().len();
 
   let mut lurk_repl = LurkRepl::new();
-  
+
   // Editing in place currently not supported
   let callback = Closure::wrap(Box::new(move |e: OnKeyEvent| {
     let event = e.dom_event();
@@ -75,8 +75,8 @@ pub fn web_repl() -> Result<(), JsValue> {
         if !line.is_empty() {
           term.writeln("");
           rl.add_history_entry(line.as_str().trim());
-	  idx = rl.history().len();
-	  term.writeln(&lurk_repl.execute_lurk(&line).unwrap());
+          idx = rl.history().len();
+          term.writeln(&lurk_repl.execute_lurk(&line).unwrap());
           line.clear();
           cursor_col = 0;
         }
@@ -108,31 +108,29 @@ pub fn web_repl() -> Result<(), JsValue> {
         cursor_col = 0;
       }
       KEY_UP_ARROW => {
-	if idx == 0 {
-	  // Do nothing
-	}
-	else {
-	  idx -= 1;
-	  line = rl.history()[idx].clone();
-	  term.write("\x1b[2K\r$ ");
-	  term.write(&line);
-	  cursor_col = line.len();
-	}
+        if idx == 0 {
+          // Do nothing
+        } else {
+          idx -= 1;
+          line = rl.history()[idx].clone();
+          term.write("\x1b[2K\r$ ");
+          term.write(&line);
+          cursor_col = line.len();
+        }
       }
       KEY_DOWN_ARROW => {
-	term.write("\x1b[2K\r$ ");
-	line.clear();
-	if idx >= rl.history().len() {
-	  // Do nothing
-	}
-	else {
-	  idx += 1;
-	  if idx != rl.history().len() {
-	    line = rl.history()[idx].clone();
-	    term.write(&line);
-	    cursor_col = line.len();
-	  }
-	}
+        term.write("\x1b[2K\r$ ");
+        line.clear();
+        if idx >= rl.history().len() {
+          // Do nothing
+        } else {
+          idx += 1;
+          if idx != rl.history().len() {
+            line = rl.history()[idx].clone();
+            term.write(&line);
+            cursor_col = line.len();
+          }
+        }
       }
       _ => {
         if !event.alt_key() && !event.alt_key() && !event.ctrl_key() && !event.meta_key() {
@@ -143,16 +141,15 @@ pub fn web_repl() -> Result<(), JsValue> {
       }
     }
   }) as Box<dyn FnMut(_)>);
-  
+
   terminal.on_key(callback.as_ref().unchecked_ref());
-  
+
   callback.forget();
-  
+
   let addon = FitAddon::new();
   terminal.load_addon(addon.clone().dyn_into::<FitAddon>()?.into());
   addon.fit();
   terminal.focus();
-  
+
   Ok(())
 }
-
