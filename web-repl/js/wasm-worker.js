@@ -9,9 +9,9 @@ function wrapExports({ Repl }) {
     try {
       return replInstance.execute_lurk(textContent);
     } catch (err) {
-      console.log('An error has occured, resetting Lurk Repl state: ' + err);
+      console.log('An error has occured, resetting engine state: ' + err);
       replInstance = new Repl();
-      return JSON.stringify({iterations: 0, result: 'An error has occured, resetting repl state: ' + err});
+      return JSON.stringify({iterations: 0, result: 'An error has occured, resetting engine state: ' + err});
     }
   };
 }

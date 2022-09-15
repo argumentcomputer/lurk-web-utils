@@ -9,9 +9,6 @@ use std::collections::HashMap;
 use serde_json::json;
 use blstrs::Scalar as Fr;
 
-mod lurk_eval;
-pub mod repl;
-
 pub use wasm_bindgen_rayon::init_thread_pool;
 
 // This is like the `main` function, except for JavaScript.
@@ -28,31 +25,31 @@ pub fn main_js() -> Result<(), JsValue> {
 #[wasm_bindgen]
 pub struct Repl {
     store: Store<Fr>,
+    limit: usize,
 }
 
 #[wasm_bindgen]
 impl Repl {
     #[wasm_bindgen(constructor)]
     pub fn new() -> Repl {
-        Repl { store: Store::<Fr>::default() }
+        Repl { 
+          store: Store::<Fr>::default(),
+          limit: 100_000_000,
+        }
     }
 
-    /// Run a lurk snippet
+    /// Run a lurk command
     #[wasm_bindgen]
     pub fn execute_lurk(&mut self, source: JsValue) -> Result<JsValue, JsValue> {
-        let limit = 100_000_000;
-
         let expression = source
             .as_string()
             .ok_or_else(|| "input source must be a string")?;
 
-        //let mut store = Store::<Fr>::default();
         let mut context: HashMap<&str, String> = HashMap::new();
-
         context.insert("expression", expression.clone());
         if let Some(expr) = self.store.read(&expression) {
             let (output, iterations, _) =
-                Evaluator::new(expr, empty_sym_env(&self.store), &mut self.store, limit).eval();
+                Evaluator::new(expr, empty_sym_env(&self.store), &mut self.store, self.limit).eval();
 
             let iterations_str = iterations.to_string();
             context.insert("iterations", iterations_str);
@@ -62,7 +59,7 @@ impl Repl {
                     result.fmt_to_string(&self.store)
                 }
                 ContTag::Error => "ERROR!".to_string(),
-                _ => format!("Computation incomplete after limit: {}", limit),
+                _ => format!("Computation incomplete after limit: {}", self.limit),
             };
 
             context.insert("result", result_str);
