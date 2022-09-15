@@ -1,7 +1,11 @@
 use wasm_bindgen::prelude::*;
 
+
 mod lurk_eval;
 pub mod repl;
+
+pub use wasm_bindgen_rayon::init_thread_pool;
+
 
 // This is like the `main` function, except for JavaScript.
 #[wasm_bindgen(start)]

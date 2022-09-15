@@ -22,14 +22,19 @@ debug = ["console_error_panic_hook"]
 [dependencies]
 # The `wasm-bindgen` crate provides the bare minimum functionality needed
 # to interact with JavaScript.
-wasm-bindgen = "0.2.45"
+wasm-bindgen = "0.2.82"
+rayon = "1.5"
+wasm-bindgen-rayon = { version = "1.0" }
 
 serde_json = "1.0"
 rustyline = { package = "yatima-rustyline", version = "0.2", default-features = false }
 rustyline-derive = { package = "yatima-rustyline-derive", version = "0.1.0" }
-xterm-js-rs = { version = "0.1.2", features = ["xterm-addon-fit"] }
-lurk = "0.1.1"
-blstrs = "0.5.0"
+xterm-js-rs = { version = "0.1.2" }
+# lurk = "0.1.1"
+# blstrs = "0.5.0"
+lurk = { git = "https://github.com/lurk-lang/lurk-rs", branch = "rebased-wasm-support", default-features = false, features = ["wasm"] }
+blstrs = { version = "0.4.2", default-features = false }
+parking_lot = { version = "0.12", features = ["nightly"] }
 
 # The `console_error_panic_hook` crate provides better debugging of panics by
 # logging them with `console.error`. This is great for development, but requires

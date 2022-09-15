@@ -5,7 +5,7 @@ use wasm_bindgen::prelude::*;
 use crate::lurk_eval::LurkRepl;
 
 use wasm_bindgen::JsCast;
-use xterm_js_rs::addons::fit::FitAddon;
+// use xterm_js_rs::addons::fit::FitAddon;
 use xterm_js_rs::{OnKeyEvent, Terminal, TerminalOptions, Theme};
 
 const PROMPT: &str = "$ ";
@@ -28,6 +28,9 @@ const KEY_DOWN_ARROW: u32 = 40;
 
 const CURSOR_LEFT: &str = "\x1b[D";
 const CURSOR_RIGHT: &str = "\x1b[C";
+
+//const CURSOR_LEFT: &str = "\x03";
+
 
 #[wasm_bindgen]
 pub fn web_repl() -> Result<(), JsValue> {
@@ -66,6 +69,11 @@ pub fn web_repl() -> Result<(), JsValue> {
   let mut idx = rl.history().len();
 
   let mut lurk_repl = LurkRepl::new();
+
+  // jcl testing
+  let mut test_line = "(let ((x (commit 123))) (open 0x2e7838216c5a9272803a2f49c3a5529f2e6bb68942d54204ce03c09727782da6))";
+  rl.add_history_entry(test_line.trim());
+  // jcl testing
 
   // Editing in place currently not supported
   let callback = Closure::wrap(Box::new(move |e: OnKeyEvent| {
@@ -146,9 +154,9 @@ pub fn web_repl() -> Result<(), JsValue> {
 
   callback.forget();
 
-  let addon = FitAddon::new();
-  terminal.load_addon(addon.clone().dyn_into::<FitAddon>()?.into());
-  addon.fit();
+  //let addon = FitAddon::new();
+  //terminal.load_addon(addon.clone().dyn_into::<FitAddon>()?.into());
+  //addon.fit();
   terminal.focus();
 
   Ok(())
