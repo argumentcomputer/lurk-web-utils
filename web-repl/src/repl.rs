@@ -70,11 +70,6 @@ pub fn web_repl() -> Result<(), JsValue> {
 
   let mut lurk_repl = LurkRepl::new();
 
-  // jcl testing
-  let mut test_line = "(let ((x (commit 123))) (open 0x2e7838216c5a9272803a2f49c3a5529f2e6bb68942d54204ce03c09727782da6))";
-  rl.add_history_entry(test_line.trim());
-  // jcl testing
-
   // Editing in place currently not supported
   let callback = Closure::wrap(Box::new(move |e: OnKeyEvent| {
     let event = e.dom_event();
