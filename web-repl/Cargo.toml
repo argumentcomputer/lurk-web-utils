@@ -72,3 +72,6 @@ bellperson-nonnative = { git = "https://github.com/lurk-lang/bellperson-nonnativ
 neptune = { git = "https://github.com/lurk-lang/neptune", branch = "sb/wasm-lurk-compat" }
 nova-snark  = { git = "https://github.com/lurk-lang/nova", branch = "sb/wasm-lurk-compat" }
 lurk = { git = "https://github.com/lurk-lang/lurk-rs", branch = "acs/wasm-support" }
+
+[net]
+git-fetch-with-cli = true
