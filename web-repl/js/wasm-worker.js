@@ -21,7 +21,7 @@ async function initHandlers() {
     (async () => {
       const singleThread = await import('../pkg/index.js');
       await singleThread.default();
-      return wrapExports(singleThread);
+      return runLurk(singleThread);
     })(),
     (async () => {
       // If threads are unsupported in this browser, skip this handler.
