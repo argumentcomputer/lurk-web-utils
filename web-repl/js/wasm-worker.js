@@ -2,7 +2,7 @@ import { threads } from 'wasm-feature-detect';
 import * as Comlink from 'comlink';
 
 var replInstance;
-// Wrap wasm-bindgen exports (the `generate` function) to add time measurement.
+// Run wasm-bindgen exports (the Lurk REPL).
 function wrapExports({ Repl }) {
   replInstance = new Repl();
   return ({ textContent }) => {
