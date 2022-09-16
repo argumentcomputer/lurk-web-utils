@@ -1,27 +1,28 @@
-# Lurk web REPL example
+# Lurk web REPL
 
-This example REPL is largely based on the following crates:
+This initial REPL is largely based on the following crates:
 
-https://github.com/rustwasm/rust-webpack-template
-https://github.com/segeljakt/xterm-js-rs
-https://github.com/jlogelin/lurk-web-component
+https://github.com/rustwasm/rust-webpack-template  
+https://github.com/GoogleChromeLabs/wasm-bindgen-rayon/tree/main/demo  
+https://github.com/jlogelin/lurk-web-component  
 
-Useful docs:
-https://rustwasm.github.io/docs/wasm-pack/tutorials/hybrid-applications-with-webpack/index.html
-https://rustwasm.github.io/docs/wasm-bindgen/
+Useful docs:  
+https://rustwasm.github.io/docs/wasm-pack/tutorials/hybrid-applications-with-webpack/index.html  
+https://rustwasm.github.io/docs/wasm-bindgen/  
+https://github.com/GoogleChromeLabs/wasm-bindgen-rayon/blob/main/README.md
 
-### Install prerequisites
+## Install prerequisites
 
-- wasm32 target:
-```
+Rust tools:
+``` sh
+# `active-toolchain` can be found with `rustup show`
+rustup component add rust-src --toolchain <active-toolchain>
 rustup target add wasm32-unknown-unknown
-```
-- wasm-pack:
-```
 cargo install wasm-pack
 ```
-- wasm-ld linker:
-```
+
+Wasm-ld linker:
+``` sh
 # Ubuntu
 sudo apt install llvm lld-14
 # Mac
@@ -32,8 +33,9 @@ export PATH=/opt/homebrew/Cellar/llvm/13.0.1_1/bin:$PATH
 # Verify installation
 llc --version
 ```
+
 - [clang](https://clang.llvm.org/get_started.html)
-- [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable) or [npm](https://nodejs.org/en/download/package-manager/)
+- [npm](https://nodejs.org/en/download/package-manager/)
 - [webpack](https://webpack.js.org/guides/installation/)
 
 ## How to install
