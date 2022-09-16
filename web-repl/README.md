@@ -10,6 +10,32 @@ Useful docs:
 https://rustwasm.github.io/docs/wasm-pack/tutorials/hybrid-applications-with-webpack/index.html
 https://rustwasm.github.io/docs/wasm-bindgen/
 
+### Install prerequisites
+
+- wasm32 target:
+```
+rustup target add wasm32-unknown-unknown
+```
+- wasm-pack:
+```
+cargo install wasm-pack
+```
+- wasm-ld linker:
+```
+# Ubuntu
+sudo apt install llvm lld-14
+# Mac
+brew install llvm
+# Add llvm to homebrew's PATH variable, e.g. one of the following
+export PATH=/opt/homebrew/opt/llvm/bin:$PATH
+export PATH=/opt/homebrew/Cellar/llvm/13.0.1_1/bin:$PATH
+# Verify installation
+llc --version
+```
+- [clang](https://clang.llvm.org/get_started.html)
+- [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable) or [npm](https://nodejs.org/en/download/package-manager/)
+- [webpack](https://webpack.js.org/guides/installation/)
+
 ## How to install
 
 ```sh
@@ -29,6 +55,12 @@ npm start
 # Builds the project and places it into the `dist` folder.
 npm run build
 ```
+
+```sh
+# Run the dist build
+cd dist && ./start-http-server.sh
+```
+Navigate to http://localhost:8000/ in your favourite browser
 
 ## How to run unit tests
 

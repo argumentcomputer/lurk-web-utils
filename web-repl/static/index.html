@@ -2,20 +2,24 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My Rust + Webpack project!</title>
+    <title>Lurk REPL</title>
     <style>
       #terminal {
         overflow: hidden;
         width: 100%;
-        height: 100%; /* <- fixed height */
-        font-size: 16px;
-        line-height: 17px; /* <- initial line-height */
+        height: 100%;
+        padding: 10px;
+      }
+      #parent {
+        width: 800px;
       }
     </style>
   </head>
 
-  <body style="background-color:#000000;margin:0;body:100%">
-    <div id="terminal" style="margin:0;body:100%"></div>
+  <body>
+    <div id="parent">
+      <div id="lurk-terminal"></div>
+    </div>
     <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
     <script src="index.js"></script>
   </body>

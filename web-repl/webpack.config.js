@@ -15,14 +15,24 @@ module.exports = {
     filename: "[name].js",
   },
   plugins: [
-    new CopyPlugin([
-      path.resolve(__dirname, "static")
-    ]),
+    new CopyPlugin({ patterns: ["static"] }),
     new WasmPackPlugin({
       crateDirectory: __dirname,
       args: "--log-level info",
+      extraArgs: "--target web"
     }),
   ],
+  devServer: {
+    headers: {
+      'Cross-Origin-Embedder-Policy': 'require-corp',
+      'Cross-Origin-Opener-Policy': 'same-origin',
+      'Access-Control-Allow-Origin': '*',
+    },
+  },
+  experiments: {
+    asyncWebAssembly: true,
+    syncWebAssembly: true,
+  },
   module: {
     rules: [
       {
