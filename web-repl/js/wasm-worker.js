@@ -3,7 +3,7 @@ import * as Comlink from 'comlink';
 
 var replInstance;
 // Run wasm-bindgen exports (the Lurk REPL).
-function wrapExports({ Repl }) {
+function runLurk({ Repl }) {
   replInstance = new Repl();
   return ({ textContent }) => {
     try {
