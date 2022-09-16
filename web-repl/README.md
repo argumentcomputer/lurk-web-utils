@@ -6,41 +6,35 @@ https://github.com/rustwasm/rust-webpack-template
 https://github.com/GoogleChromeLabs/wasm-bindgen-rayon/tree/main/demo  
 https://github.com/jlogelin/lurk-web-component  
 
-Useful docs:
+Useful docs:  
 https://rustwasm.github.io/docs/wasm-pack/tutorials/hybrid-applications-with-webpack/index.html  
 https://rustwasm.github.io/docs/wasm-bindgen/  
 https://github.com/GoogleChromeLabs/wasm-bindgen-rayon/blob/main/README.md
 
-### Install prerequisites
+## Install prerequisites
 
-- Nightly rust-src component:
-```
+``` sh
+# `active-toolchain` can be found with `rustup show`
 rustup component add rust-src --toolchain <active-toolchain>
-```
-where `active-toolchain` can be found with `rustup show`
-
-- wasm32 target:
-```
 rustup target add wasm32-unknown-unknown
-```
-- wasm-pack:
-```
 cargo install wasm-pack
 ```
-- wasm-ld linker:
-```
+
+``` sh
+# Install wasm-ld linker
 # Ubuntu
 sudo apt install llvm lld-14
 # Mac
 brew install llvm
-## Add llvm to homebrew's PATH variable, e.g. one of the following
+# Add llvm to homebrew's PATH variable, e.g. one of the following
 export PATH=/opt/homebrew/opt/llvm/bin:$PATH
 export PATH=/opt/homebrew/Cellar/llvm/13.0.1_1/bin:$PATH
 # Verify installation
 llc --version
 ```
+
 - [clang](https://clang.llvm.org/get_started.html)
-- [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable) or [npm](https://nodejs.org/en/download/package-manager/)
+- [npm](https://nodejs.org/en/download/package-manager/)
 - [webpack](https://webpack.js.org/guides/installation/)
 
 ## How to install
