@@ -13,6 +13,7 @@ https://github.com/GoogleChromeLabs/wasm-bindgen-rayon/blob/main/README.md
 
 ## Install prerequisites
 
+Rust tools:
 ``` sh
 # `active-toolchain` can be found with `rustup show`
 rustup component add rust-src --toolchain <active-toolchain>
@@ -20,8 +21,8 @@ rustup target add wasm32-unknown-unknown
 cargo install wasm-pack
 ```
 
+Wasm-ld linker:
 ``` sh
-# Install wasm-ld linker
 # Ubuntu
 sudo apt install llvm lld-14
 # Mac
@@ -33,6 +34,7 @@ export PATH=/opt/homebrew/Cellar/llvm/13.0.1_1/bin:$PATH
 llc --version
 ```
 
+Javascript tools:
 - [clang](https://clang.llvm.org/get_started.html)
 - [npm](https://nodejs.org/en/download/package-manager/)
 - [webpack](https://webpack.js.org/guides/installation/)
