@@ -34,7 +34,6 @@ export PATH=/opt/homebrew/Cellar/llvm/13.0.1_1/bin:$PATH
 llc --version
 ```
 
-Javascript tools:
 - [clang](https://clang.llvm.org/get_started.html)
 - [npm](https://nodejs.org/en/download/package-manager/)
 - [webpack](https://webpack.js.org/guides/installation/)
