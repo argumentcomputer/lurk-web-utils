@@ -27,7 +27,7 @@ sudo apt install llvm lld-14
 # Mac
 brew install llvm
 # Add llvm to homebrew's PATH variable, e.g. one of the following
-export PATH=/usr/local/opt/llvm/bin:$PATH
+export PATH=/opt/homebrew/opt/llvm/bin:$PATH
 export PATH=/opt/homebrew/Cellar/llvm/13.0.1_1/bin:$PATH
 # Verify installation
 llc --version
@@ -55,6 +55,12 @@ npm start
 # Builds the project and places it into the `dist` folder.
 npm run build
 ```
+
+```sh
+# Run the dist build
+cd dist && ./start-http-server.sh
+```
+Navigate to http://localhost:8000/ in your favourite browser
 
 ## How to run unit tests
 
