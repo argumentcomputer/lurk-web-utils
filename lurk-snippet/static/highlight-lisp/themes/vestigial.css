@@ -1,0 +1,21 @@
+.lurk-code-component .output {color: #5e5e5e;}
+.lurk-code-component pre { white-space: pre; background-color: #f8f8f8; border: 1px solid #ccc; font-size: 13px; line-height: 19px; overflow: auto; padding: 6px 10px; border-radius: 3px; }
+.lurk-code-component pre code {white-space: pre; margin: 0; padding: 0; background: none; border: none; overflow-x: auto; font-size: 13px;}
+.lurk-code-component code {margin: 0 2px; padding: 0 5px; white-space: nowrap; font-family: Consolas, "Liberation Mono", Courier, monospace; background: #f8f8f8; border: 1px solid #eaeaea; border-radius: 3px;}
+
+.lurk-code-component code.hl-highlighted .function.known {color: #a93;}
+.lurk-code-component code.hl-highlighted .function.known.special {color: #2a3;}
+.lurk-code-component code.hl-highlighted .keyword {color: #7aa;}
+.lurk-code-component code.hl-highlighted .keyword.known {color: #4bb;}
+.lurk-code-component code.hl-highlighted .symbol {color: #75a;}
+.lurk-code-component code.hl-highlighted .lambda-list {color: #966;}
+.lurk-code-component code.hl-highlighted .number {color: #800;}
+.lurk-code-component code.hl-highlighted .variable.known {color: #c3c;}
+.lurk-code-component code.hl-highlighted .variable.global {color: #939;}
+.lurk-code-component code.hl-highlighted .variable.constant {color: #229;}
+.lurk-code-component code.hl-highlighted .nil {color: #f00;}
+
+.lurk-code-component code.hl-highlighted .comment, code.hl-highlighted .comment *, code.hl-highlighted .comment .string {color: #aaa !important;}
+.lurk-code-component code.hl-highlighted .string, code.hl-highlighted .string * {color: #088 !important;}
+
+.lurk-code-component code.hl-highlighted .list.active {display: inline-block; background: #aefff7;}

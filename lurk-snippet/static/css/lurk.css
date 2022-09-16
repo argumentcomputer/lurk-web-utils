@@ -1,0 +1,67 @@
+[contenteditable] {
+  outline: 0px solid transparent;
+}
+
+.lurk-code-component .code-section {
+  padding-top: 20px;
+}
+
+.lurk-code-component {
+  position: relative;
+}
+
+.main{
+  width: 600px;
+}
+
+#output-container {
+  display: none;
+}
+
+#lurk-code-component-controls {
+  display: none;
+}
+
+#run {
+  background-repeat: no-repeat;
+  background-color: rgb(104, 104, 104);
+  -webkit-mask-image: url(/img/play-fill.svg);
+  mask-image: url(/img/play-fill.svg);
+  height: 16px;
+  width: 16px;
+  border: 0;
+  box-sizing: border-box;
+  transition: 100ms all ease;
+  cursor: pointer;
+  position: absolute;
+  top: 7px;
+  right: 6px;
+}
+
+#run:hover {
+  -moz-box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
+}
+
+#reset {
+  background-repeat: no-repeat;
+  background-color: rgb(104, 104, 104);
+  -webkit-mask-image: url(/img/rewind-fill.svg);
+  mask-image: url(/img/rewind-fill.svg);
+  height: 16px;
+  width: 16px;
+  border: 0;
+  box-sizing: border-box;
+  transition: 100ms all ease;
+  cursor: pointer;
+  position: absolute;
+  top: 7px;
+  right: 26px;
+}
+
+#reset:hover {
+  -moz-box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
+}
