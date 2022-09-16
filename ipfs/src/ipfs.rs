@@ -11,7 +11,7 @@ use reqwest::multipart;
 use serde_json;
 
 // Store IPLD data on IPFS and get its CID
-async fn dag_put(host: &String, dag: Ipld) -> Result<String, reqwest::Error> {
+pub async fn dag_put(host: &String, dag: Ipld) -> Result<String, reqwest::Error> {
     let url = format!(
         "http://{}{}?{}",
         host, "/api/v0/dag/put", "input-codec=dag-cbor&pin=true&hash=blake2b-256"
@@ -38,7 +38,7 @@ async fn dag_put(host: &String, dag: Ipld) -> Result<String, reqwest::Error> {
 }
 
 // Load IPLD data from IPFS given a CID
-async fn dag_get(host: &String, cid: &String) -> Result<Ipld, reqwest::Error> {
+pub async fn dag_get(host: &String, cid: &String) -> Result<Ipld, reqwest::Error> {
     let url = format!("http:/{}{}?arg={}", host, "/api/v0/block/get", cid);
     let client = reqwest::Client::new();
     let response = client.post(url).send().await?.bytes().await?;
