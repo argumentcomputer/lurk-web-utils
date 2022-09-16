@@ -31,7 +31,7 @@ async function initHandlers() {
       );
       await multiThread.default();
       await multiThread.initThreadPool(navigator.hardwareConcurrency);
-      return wrapExports(multiThread);
+      return runLurk(multiThread);
     })()
   ]);
 
