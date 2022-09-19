@@ -7,7 +7,7 @@ function wrapExports({ Repl }) {
   replInstance = new Repl();
   return ({ textContent }) => {
     try {
-      return replInstance.execute_lurk(textContent);
+      return replInstance.execute_lurk_catch(textContent);
     } catch (err) {
       console.log('An error has occured, resetting Lurk Repl state: ' + err);
       replInstance = new Repl();
