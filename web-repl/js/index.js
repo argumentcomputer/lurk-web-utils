@@ -90,7 +90,6 @@ import * as Comlink from 'comlink';
         }
         break;
       case '\x1B[A': // up arrow
-        console.log('up arrow');
         if (entries.length > 0) {
           if (currPos > 0) {
             currPos -= 1;
@@ -100,7 +99,6 @@ import * as Comlink from 'comlink';
         }
         break;
       case '\x1B[B': // down arrow
-        console.log('down arrow');
         currPos += 1;
         if (currPos === entries.length || entries.length === 0) {
           currPos -= 1;
@@ -109,6 +107,12 @@ import * as Comlink from 'comlink';
           cmd = entries[currPos];
         }
         term.write('\x1b[2K\r'+shellprompt + cmd);
+        break;
+      case '\x1B[D': // back arrow
+        term.write(e);
+        break;
+      case '\x1B[C': //forward arrow
+        term.write(e);
         break;
       default: // Print all other characters for demo
         if (e >= String.fromCharCode(0x20) && e <= String.fromCharCode(0x7E) || e >= '\u00a0') {
