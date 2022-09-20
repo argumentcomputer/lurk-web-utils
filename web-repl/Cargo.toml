@@ -48,12 +48,12 @@ js-sys = "0.3.22"
 wasm-bindgen-futures = "0.3.22"
 
 [patch.crates-io]
-ec-gpu-gen = { git = "https://github.com/lurk-lang/ec-gpu", branch = "sb/wasm-lurk-compat" }
-bellperson = { git = "https://github.com/lurk-lang/bellperson", branch = "sb/wasm-lurk-compat" }
-bellperson-nonnative = { git = "https://github.com/lurk-lang/bellperson-nonnative", branch = "sb/wasm-lurk-compat" }
-neptune = { git = "https://github.com/lurk-lang/neptune", branch = "sb/wasm-lurk-compat" }
-nova-snark  = { git = "https://github.com/lurk-lang/nova", branch = "sb/wasm-lurk-compat" }
-lurk = { git = "https://github.com/lurk-lang/lurk-rs", branch = "acs/wasm-support" }
+ec-gpu-gen = { git = "https://github.com/lurk-lang/ec-gpu", rev = "c7ced230ad40cde0708d810a4823ca143627ee16" }
+bellperson = { git = "https://github.com/lurk-lang/bellperson", rev = "e7482b1629f25e3955f66571f4553fac2795621c" }
+bellperson-nonnative = { git = "https://github.com/lurk-lang/bellperson-nonnative", rev = "2658b7a8f1ec00e7f213a09ef65867e7c268de3b" }
+neptune = { git = "https://github.com/lurk-lang/neptune", rev = "ed7f62ffd811ba840a353f6f7b9d674d11f848d4" }
+nova-snark  = { git = "https://github.com/lurk-lang/nova", rev = "ac8b45bc6b3de895806874c67928060763948ab9" }
+lurk = { git = "https://github.com/lurk-lang/lurk-rs", rev = "dc968655b292b1098ef73a2d26e990abe52d99e3" }
 
 [net]
 git-fetch-with-cli = true
