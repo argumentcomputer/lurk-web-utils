@@ -3,7 +3,7 @@
   "name": "Lurk Snippet",
   "version": "0.1.0",
   "scripts": {
-    "build": "rimraf dist pkg && webpack && cp start-http-server.sh dist",
+    "build": "rimraf dist pkg && webpack --mode production && cp start-http-server.sh dist",
     "start": "rimraf dist pkg && webpack-dev-server --open",
     "test": "cargo test && wasm-pack test --headless"
   },
