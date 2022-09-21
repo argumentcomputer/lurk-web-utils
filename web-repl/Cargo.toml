@@ -16,8 +16,8 @@ crate-type = ["cdylib"]
 lto = true
 
 [features]
-default = ["debug"]
-debug = ["console_error_panic_hook"]
+# default = ["debug"]
+default = ["wee_alloc"]
 
 [dependencies]
 # The `wasm-bindgen` crate provides the bare minimum functionality needed
@@ -25,7 +25,6 @@ debug = ["console_error_panic_hook"]
 wasm-bindgen = "0.2.82"
 rayon = "1.5"
 wasm-bindgen-rayon = "1.0"
-
 serde_json = "1.0"
 rustyline = { package = "yatima-rustyline", version = "0.2", default-features = false }
 rustyline-derive = { package = "yatima-rustyline-derive", version = "0.1.0" }
@@ -34,11 +33,17 @@ lurk = "0.1.1"
 blstrs = "0.5.0"
 parking_lot = { version = "0.12", features = ["nightly"] }
 
+# `wee_alloc` is a tiny allocator for wasm that is only ~1K in code size
+# compared to the default allocator's ~10K. However, it is slower than the default
+# allocator, so it's not enabled by default.
+wee_alloc = { version = "0.4.2", optional = true }
+
 # The `console_error_panic_hook` crate provides better debugging of panics by
 # logging them with `console.error`. This is great for development, but requires
 # all the `std::fmt` and `std::panicking` infrastructure, so it's only enabled
 # in debug mode.
-console_error_panic_hook = { version = "0.1.5", optional = true }
+[target."cfg(debug_assertions)".dependencies]
+console_error_panic_hook = "0.1.5"
 
 # These crates are used for running unit tests.
 [dev-dependencies]

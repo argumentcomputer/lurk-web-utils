@@ -1,6 +1,6 @@
 {
   "author": "Sam Burnham",
-  "name": "Lurk web REPL",
+  "name": "Lurk Snippet",
   "version": "0.1.0",
   "scripts": {
     "build": "rimraf dist pkg && webpack && cp start-http-server.sh dist",
@@ -8,8 +8,6 @@
     "test": "cargo test && wasm-pack test --headless"
   },
   "dependencies": {
-    "xterm": "^4.4.0",
-    "xterm-addon-fit": "^0.3.0",
     "wasm-feature-detect": "^1.2.11",
     "comlink": "^4.3.1"
   },
