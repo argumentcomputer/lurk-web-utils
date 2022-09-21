@@ -46,6 +46,7 @@ npm install
 ```sh
 # Builds the project and opens it in a new browser tab. Auto-reloads when the project changes.
 npm start
+CC=clang AR=llvm-ar npm start
 ```
 
 ## How to build in release mode
@@ -53,6 +54,7 @@ npm start
 ```sh
 # Builds the project and places it into the `dist` folder.
 npm run build
+CC=clang AR=llvm-ar npm run build
 ```
 
 ```sh

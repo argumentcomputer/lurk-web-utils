@@ -1,10 +1,19 @@
 import init from '../pkg/index.js';
 import * as Comlink from 'comlink';
+import { threads } from 'wasm-feature-detect';
 
 var originalContents;
 
 (async function() {
+  
+  if (await threads()) {
+    console.log("webassembly threads supported.")
+  } else {
+    console.log("webassembly threads not supported!!!")
+  }
+
   await init();
+
   originalContents = document.getElementById("lurkcode").textContent;
   HighlightLisp.highlight_auto();
   HighlightLisp.paren_match();
@@ -20,7 +29,7 @@ var originalContents;
   var output_container = document.getElementById("lurk-code-component-controls");
   output_container.style.display = "block";
 
-  // let handler = handlers['singleThread'];
+  //let handler = handlers['singleThread'];
   let handler = handlers['multiThread'];
   // If handler doesn't exist, it's not supported.
   if (!handler) return;

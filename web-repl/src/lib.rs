@@ -1,10 +1,10 @@
 use wasm_bindgen::prelude::*;
 
-use blstrs::Scalar as Fr;
 use lurk::{
     eval::{empty_sym_env, Evaluator},
     store::{ContTag, Pointer, Store},
     writer::Write,
+    proof::nova,
 };
 use serde_json::json;
 use std::collections::HashMap;
@@ -24,7 +24,7 @@ pub fn main_js() -> Result<(), JsValue> {
 
 #[wasm_bindgen]
 pub struct Repl {
-    store: Store<Fr>,
+    store: Store<nova::S1>,
     limit: usize,
 }
 
@@ -33,7 +33,7 @@ impl Repl {
     #[wasm_bindgen(constructor)]
     pub fn new() -> Repl {
         Repl {
-            store: Store::<Fr>::default(),
+            store: Store::<nova::S1>::default(),
             limit: 100_000_000,
         }
     }
