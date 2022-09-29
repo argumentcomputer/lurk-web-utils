@@ -2,13 +2,13 @@ mod utils;
 /// Module for wasm-bindgen specific handling and endpoints.
 use lurk::{
     eval::{empty_sym_env, Evaluator},
+    proof::nova,
     store::{ContTag, Pointer, Store},
     writer::Write,
-    proof::nova,
 };
+use serde_json::json;
 use std::collections::HashMap;
 use wasm_bindgen::prelude::*;
-use serde_json::json;
 // use blstrs::Scalar as Fr;
 //use pasta_curves::pallas::Scalar as P;
 pub use wasm_bindgen_rayon::init_thread_pool;
@@ -66,21 +66,33 @@ impl Repl {
 
         context.insert("expression", expression.clone());
         if let Some(expr) = self.store.read(&expression) {
-            let (output, iterations, _) =
-                Evaluator::new(expr, empty_sym_env(&self.store), &mut self.store, self.limit).eval();
+            match Evaluator::new(
+                expr,
+                empty_sym_env(&self.store),
+                &mut self.store,
+                self.limit,
+            )
+            .eval()
+            {
+                Ok((output, iterations, _)) => {
+                    let iterations_str = iterations.to_string();
+                    context.insert("iterations", iterations_str);
+                    let result_str = match output.cont.tag() {
+                        ContTag::Outermost | ContTag::Terminal => {
+                            let result = self.store.fetch(&output.expr).clone().unwrap();
+                            result.fmt_to_string(&self.store)
+                        }
+                        ContTag::Error => "ERROR!".to_string(),
+                        _ => format!("Computation incomplete after limit: {}", self.limit),
+                    };
 
-            let iterations_str = iterations.to_string();
-            context.insert("iterations", iterations_str);
-            let result_str = match output.cont.tag() {
-                ContTag::Outermost | ContTag::Terminal => {
-                    let result = self.store.fetch(&output.expr).clone().unwrap();
-                    result.fmt_to_string(&self.store)
+                    context.insert("result", result_str);
                 }
-                ContTag::Error => "ERROR!".to_string(),
-                _ => format!("Computation incomplete after limit: {}", self.limit),
+                Err(e) => {
+                    let error = format!("Evaluation Error: {}", &e);
+                    context.insert("result", error);
+                }
             };
-
-            context.insert("result", result_str);
         } else {
             let error = format!("Syntax Error: {}", &expression);
             context.insert("result", error);

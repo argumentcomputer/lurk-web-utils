@@ -1,6 +1,6 @@
 {
   "author": "Sam Burnham",
-  "name": "Lurk Snippet",
+  "name": "lurk-snippet",
   "version": "0.1.0",
   "scripts": {
     "build": "rimraf dist pkg && webpack --mode production && cp start-http-server.sh dist",

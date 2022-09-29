@@ -13,7 +13,7 @@ module.exports = {
   output: {
     path: dist,
     filename: "[name].js",
-    publicPath: '',
+    publicPath: '/lurk/',
   },
   plugins: [
     new CopyPlugin({ patterns: ["static"] }),

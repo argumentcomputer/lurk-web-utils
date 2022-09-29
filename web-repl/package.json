@@ -1,6 +1,6 @@
 {
   "author": "Sam Burnham",
-  "name": "Lurk web REPL",
+  "name": "lurk-web-repl",
   "version": "0.1.0",
   "scripts": {
     "build": "rimraf dist pkg && webpack --mode production && cp start-http-server.sh dist",
