@@ -61,8 +61,10 @@ impl Repl {
                     context.insert("iterations", iterations_str);
                     let result_str = match output.cont.tag() {
                         ContTag::Outermost | ContTag::Terminal => {
-                            let result = self.store.fetch(&output.expr).clone().unwrap();
-                            result.fmt_to_string(&self.store)
+                            match self.store.fetch(&output.expr) {
+                                Some(expr) => expr.clone().fmt_to_string(&self.store),
+                                None => format!("Store Error: fetch failed"),
+                            }
                         }
                         ContTag::Error => "ERROR!".to_string(),
                         _ => format!("Computation incomplete after limit: {}", self.limit),
