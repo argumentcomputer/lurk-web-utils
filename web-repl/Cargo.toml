@@ -58,7 +58,7 @@ bellperson = { git = "https://github.com/lurk-lang/bellperson", rev = "e7482b162
 bellperson-nonnative = { git = "https://github.com/lurk-lang/bellperson-nonnative", rev = "2658b7a8f1ec00e7f213a09ef65867e7c268de3b" }
 neptune = { git = "https://github.com/lurk-lang/neptune", rev = "ed7f62ffd811ba840a353f6f7b9d674d11f848d4" }
 nova-snark  = { git = "https://github.com/lurk-lang/nova", rev = "ac8b45bc6b3de895806874c67928060763948ab9" }
-lurk = { git = "https://github.com/lurk-lang/lurk-rs", rev = "dc968655b292b1098ef73a2d26e990abe52d99e3" }
+lurk = { git = "https://github.com/lurk-lang/lurk-rs", rev = "aadba8d0d53dc106a668a9fb932d1e793361d774" }
 
 [net]
 git-fetch-with-cli = true
