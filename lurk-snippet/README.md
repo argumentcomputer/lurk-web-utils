@@ -75,6 +75,7 @@ npm test -- --chrome
 # Runs tests in Safari
 npm test -- --safari
 ```
+Note: If not on Linux, modify the test target in `package.json` to reflect your system, which can be found with `rustup show`. Alternatively, run `cargo test --target <target>` to run local tests, or `wasm-pack test --headless -- --<browser>` for web tests.
 
 ## What does each file do?
 
