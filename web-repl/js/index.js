@@ -1,12 +1,18 @@
 import css from 'xterm/css/xterm.css';
 import {Terminal} from 'xterm/lib/xterm.js';
 import { FitAddon } from 'xterm-addon-fit';
+import { threads } from 'wasm-feature-detect';
 import init from '../pkg/index.js';
 import * as Comlink from 'comlink';
 
 (async function() {
+  if (await threads()) {
+    console.log("webassembly threads supported.")
+  } else {
+    console.log("webassembly threads not supported!!!")
+  }
+
   await init();
-  //await initThreadPool(navigator.hardwareConcurrency);
 
   // Create a separate thread from wasm-worker.js and get a proxy to its handlers.
   let handlers = await Comlink.wrap(

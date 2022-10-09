@@ -3,9 +3,9 @@
   "name": "lurk-web-repl",
   "version": "0.1.0",
   "scripts": {
-    "build": "rimraf dist pkg && webpack --mode production && cp start-http-server.sh dist",
+    "build": "cargo clean && rimraf dist pkg && webpack --mode production && cp start-http-server.sh dist",
     "start": "rimraf dist pkg && webpack-dev-server --open",
-    "test": "cargo test && wasm-pack test --headless"
+    "test": "cargo test --target x86_64-unknown-linux-gnu && wasm-pack test --headless"
   },
   "dependencies": {
     "xterm": "^4.4.0",
