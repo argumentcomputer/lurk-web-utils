@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "/"
+  to = "/posts"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cross-Origin-Embedder-Policy = "credentialless"
+    Cross-Origin-Opener-Policy = "same-origin"
