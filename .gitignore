@@ -12,5 +12,5 @@
 **/node_modules
 
 **/dist
-**/pkg
+#**/pkg
 .DS_Store
