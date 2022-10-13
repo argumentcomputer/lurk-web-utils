@@ -32,12 +32,12 @@ import * as Comlink from 'comlink';
   term.open(document.getElementById('lurk-terminal'));
   fitAddon.fit();
 
-  var shellprompt = '\u001b[32mlurk> \u001b[37m';
+  var shellprompt = '\u001b[32m> \u001b[37m';
   term.prompt = function () {
-    term.write('\r\n' + shellprompt);
+    term.write(shellprompt);
   };
 
-  term.writeln('Welcome to Lurk REPL');
+  term.writeln('Lurk REPL welcomes you.');
   // term.writeln('');
   term.prompt();
   term.setOption('cursorBlink', true);
